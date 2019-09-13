@@ -2,8 +2,8 @@ import os
 
 class Config:
     
-    NEWS_API_SOURCES_URL ='https://newsapi.org/v2/sources?apiKey={}'
-    NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
+    NEWS_API_SOURCES_URL ='https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'
+    NEWS_API_KEY = '839b9b85c20d4fae9b41cf696418dd0a'
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
 

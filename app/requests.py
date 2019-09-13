@@ -1,34 +1,44 @@
-from app import app
+# from app import app
 import urllib.request,json
-from .models import news
+from .models import News
 
-News = news.News
+# News = news.News
 
 
 # Getting api key
-api_key = app.config['NEWS_API_KEY']
-sources_url = app.config["NEWS_API_SOURCES_URL"]
+api_key = None
 
-def get_news(category):
-    '''e
+# Getting sources url
+sources_url = None
+
+def configure_request(app):
+    global api_key,sources_url
+    api_key = app.config['NEWS_API_KEY']
+    sources_url = app.config['NEWS_API_SOURCES_URL']
+    print(api_key)
+    print(sources_url)
+
+
+def get_newss(category):
+    '''
     Function that gets the json response to our url request
     '''
-    get_news_url = sources_url.format(category,api_key)
+    get_newss_url = sources_url.format(category,api_key)
 
-    with urllib.request.urlopen(get_news_url) as url:
-        get_news_data = url.read()
-        get_news_response = json.loads(get_news_data)
+    with urllib.request.urlopen(get_newss_url) as url:
+        get_newss_data = url.read()
+        get_newss_response = json.loads(get_newss_data)
 
         news_sources = None
 
-        if get_news_response['sources']:
-            news_sources_list = get_news_response['sources']
+        if get_newss_response['sources']:
+            news_sources_list = get_newss_response['sources']
             news_sources = process_sources(news_sources_list)
 
 
     return news_sources
 
-def process_sources(new_list):
+def process_sources(news_list):
     '''
     Function  that processes the news sources and transform them to a list of Objects
 
@@ -47,7 +57,7 @@ def process_sources(new_list):
         country = news_item.get('country')
         url = news_item.get('url')
 
-        if poster:
+        if description:
             news_object = News(name,description,category,language,country,url)
             news_sources.append(news_object)
 
