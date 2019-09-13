@@ -13,7 +13,7 @@
             <h3> Business News</h3>
             <ul>
                 {% for business in business_news %}
-                    <li>{{ business.description}}</li>
+                    <li>{{ business.name}}</li>
                 {% endfor %}
             </ul>
 
@@ -21,14 +21,14 @@
             <h3> Technology News </h3>
             <ul>
                 {% for technology in technology_news %}
-                    <li>{{ technology.description }}</li>
+                    <li>{{ technology.name }}</li>
                 {% endfor %}
             </ul>
             <!-- Sports news section -->
             <h3>Sport News</h3>
              <ul>
                 {% for sports in sports_news %}
-                    <li>{{ sports.description}}</li>
+                    <li>{{ sports.name}}</li>
                 {% endfor %}
             </ul>
 
@@ -36,7 +36,7 @@
             <h3> General News</h3>
             <ul>
                 {% for general in general_news %}
-                    <li>{{ general.description}}</li>
+                    <li>{{ general.name}}</li>
                 {% endfor %}
             </ul>
 
@@ -44,14 +44,14 @@
             <h3> Entertainment News </h3>
             <ul>
                 {% for entertainment in entertainment_news %}
-                    <li>{{ entertainment.description }}</li>
+                    <li>{{ entertainment.name }}</li>
                 {% endfor %}
             </ul>
             <!-- Health news section -->
             <h3>Health News</h3>
              <ul>
                 {% for health in health_news %}
-                    <li>{{ health.description}}</li>
+                    <li>{{ health.name}}</li>
                 {% endfor %}
             </ul>
 
@@ -59,7 +59,7 @@
             <h3>Science News</h3>
              <ul>
                 {% for science in science_news %}
-                    <li>{{ science.description}}</li>
+                    <li>{{ science.name}}</li>
                 {% endfor %}
             </ul>
     </body>
