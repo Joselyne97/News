@@ -1,66 +1,141 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the News Review website </title>
-        {% endif %}
-    </head>
+{% extends 'base.html'%}
+{% block content %}
+
+
     <body>
+            <div class="container-fluid">
+                    <div class="row">
+                        
+                        
             <!-- Business news section  -->
-            <h3> Business News</h3>
-            <ul>
+            <h3 style="text-align: center;"> Business News</h3>
+            
                 {% for business in business_news %}
-                    <li>{{ business.name}}</li>
+                <div class="col-md-4">
+                        <div class="thumbnail">
+                            <div class="details">
+                    <h5>{{business.name}}</h5>
+                    <p>{{business.description}}</p>
+                    <p>{{business.country}}</p>
+                    <p>{{business.language}}</p>
+                    <p><a href="/news/{{business.name}}">Read {{business.name}} Articles</a></p>
+                </div>
+            </div>
+        </div>
                 {% endfor %}
-            </ul>
-
+            </div>
+        
+            <div class="row">
             <!-- Technology news section -->
-            <h3> Technology News </h3>
-            <ul>
-                {% for technology in technology_news %}
-                    <li>{{ technology.name }}</li>
+            <h3 style="text-align: center;"> Technology News </h3>
+            {% for technology in technology_news %}
+                <div class="col-md-4">
+                        <div class="thumbnail">
+                            <div class="details">
+                    <h5>{{technology.name}}</h5>
+                    <p>{{technology.description}}</p>
+                    <p>{{technology.country}}</p>
+                    <p>{{technology.language}}</p>
+                    
+                </div>
+            </div>
+        </div>
                 {% endfor %}
-            </ul>
+            </div>
+            <div class="row">
             <!-- Sports news section -->
-            <h3>Sport News</h3>
-             <ul>
-                {% for sports in sports_news %}
-                    <li>{{ sports.name}}</li>
-                {% endfor %}
-            </ul>
-
+            <h3 style="text-align: center;">Sport News</h3>
+            {% for sports in sports_news %}
+            <div class="col-md-4">
+                    <div class="thumbnail">
+                        <div class="details">
+                <h5>{{sports.name}}</h5>
+                <p>{{sports.description}}</p>
+                <p>{{sports.country}}</p>
+                <p>{{sports.language}}</p>
+                
+            </div>
+        </div>
+    </div>
+            {% endfor %}
+        </div>
+    
+    <div class="row">
             <!-- General news section  -->
-            <h3> General News</h3>
-            <ul>
+            <h3 style="text-align: center;"> General News</h3>
+            
                 {% for general in general_news %}
-                    <li>{{ general.name}}</li>
+                <div class="col-md-4">
+                        <div class="thumbnail">
+                            <div class="details">
+                    <h5>{{general.name}}</h5>
+                    <p>{{general.description}}</p>
+                    <p>{{general.country}}</p>
+                    <p>{{general.language}}</p>
+                    
+                </div>
+            </div>
+        </div>
                 {% endfor %}
-            </ul>
+            </div>
+
+            <div class="row">
 
             <!-- Entertainment news section -->
-            <h3> Entertainment News </h3>
-            <ul>
+            <h3 style="text-align: center;"> Entertainment News </h3>
+            
                 {% for entertainment in entertainment_news %}
-                    <li>{{ entertainment.name }}</li>
+                <div class="col-md-4">
+                        <div class="thumbnail">
+                            <div class="details">
+                    <h5>{{entertainment.name}}</h5>
+                    <p>{{entertainment.description}}</p>
+                    <p>{{entertainment.country}}</p>
+                    <p>{{entertainment.language}}</p>
+                    
+                </div>
+            </div>
+        </div>
                 {% endfor %}
-            </ul>
-            <!-- Health news section -->
-            <h3>Health News</h3>
-             <ul>
-                {% for health in health_news %}
-                    <li>{{ health.name}}</li>
-                {% endfor %}
-            </ul>
+            </div>
 
-            <!-- Science news section -->
-            <h3>Science News</h3>
-             <ul>
-                {% for science in science_news %}
-                    <li>{{ science.name}}</li>
+            <div class="row">
+
+            <!-- Health news section -->
+            <h3 style="text-align: center;">Health News</h3>
+             
+                {% for health in health_news %}
+                <div class="col-md-4">
+                        <div class="thumbnail">
+                            <div class="details">
+                    <h5>{{health.name}}</h5>
+                    <p>{{health.description}}</p>
+                    <p>Country: {{health.country}}</p>
+                    <p>Language: {{health.language}}</p>
+                    
+                </div>
+            </div>
+        </div>
                 {% endfor %}
-            </ul>
-    </body>
-</html>
+            </div>
+
+            <div class="row">
+            <!-- Science news section -->
+            <h3 style="text-align: center;">Science News</h3>
+            {% for science in science_news %}
+            <div class="col-md-4">
+                    <div class="thumbnail">
+                        <div class="details">
+                <h5>{{science.name}}</h5>
+                <p>{{science.description}}</p>
+                <p>{{science.country}}</p>
+                <p>{{science.language}}</p>
+                
+            </div>
+        </div>
+    </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock%}

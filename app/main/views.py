@@ -24,5 +24,15 @@ def index():
     title = 'Home - Welcome to The News Review Website Online'
     return render_template('index.html', title = title, business_news = business_news, technology_news = technology_news,sports_news = sports_news, general_news = general_news, entertainment_news = entertainment_news, health_news = health_news, science_news = science_news)
 
-    
+@main.route('/news/<id>')
+def articles(id):
+   '''
+   view articles page
+   '''
+   print('test')
+   articles = get_articles(id)
+  
+   title = 'Home - Welcome to The News Review Website Online those are articles'
+   return render_template('article.html',title= title,articles = articles)
+
 
