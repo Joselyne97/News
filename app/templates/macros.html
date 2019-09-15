@@ -1,14 +1,14 @@
-{% macro displayNewsList(news_list) %}
+{% macro displayArticlesList(artis_list) %}
 <div class="row">
-   {% for news in news_list%}
+   {% for artis in artis_list%}
    <div class="col-md-3  movie-card">
        <p>
-              {{ news.description }}
+              {{ artis.description }}
        </p>
            <li class="text-center">
                    <!-- <a href="/news/{{news.id}}"> -->
-                   <a href="{{url_for('main.articles', id=news.id)}}">
-                   {{ news.name|truncate(10)}}</a>
+                   <a href="{{url_for('main.article', id=news.id)}}">
+                   {{ artis.name|truncate(10)}}</a>
                </li>
        <!-- <li>{{ news.name}}</li> -->
        </div>
