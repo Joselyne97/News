@@ -93,7 +93,7 @@ def process_articles(articles_list):
         title = article.get('title')
         description = article.get('description')
         url = article.get('url')
-        image = article.get('urlToImage')
+        image = article.get('image')
         
         
         if image:
@@ -102,17 +102,3 @@ def process_articles(articles_list):
     
     return articles_results
 
-# def search_news(wanted_news):
-#     search_news_url = 'https://newsapi.org/v2/everything?apiKey={}&q={}'.format(api_key,wanted_news)
-
-#     with urllib.request.urlopen(search_news_url) as url:
-#         search_news_data = url.read()
-#         search_news_response = json.loads(search_news_data)
-
-#         search_news_results = None
-
-#         if search_news_response['articles']:
-#             search_news_list = search_news_response['articles']
-#             search_news_results = process_sources(search_news_list)
-
-#     return search_news_results
