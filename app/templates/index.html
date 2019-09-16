@@ -2,14 +2,11 @@
 
 {% block content %}
 
-{% block articles %}
-    {% include 'article.html' %}
-{% endblock %}
+
     <body>
             <div class="container-fluid">
-                    <div class="row">
-                        
-                        
+                
+                        <div class="row">
             <!-- Business news section  -->
             <h3 style="text-align: center;"> Business News</h3>
             
@@ -22,6 +19,8 @@
                     <p>{{business.country}}</p>
                     <p>{{business.language}}</p>
                     <p><a href="{{business.url}}">Read more</a></p>
+                    <a href="/articles/{{business.id}}">Article</a>
+                    
                 </div>
             </div>
         </div>
