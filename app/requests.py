@@ -43,16 +43,18 @@ def get_articles(id):
     Function that processes the articles and returns a list of articles objects
     '''
     get_articles_url = articles_url.format(id,api_key)
-    print('articles testing')
-    print(get_articles_url)
+    
     with urllib.request.urlopen(get_articles_url) as url:
-        articles_results = json.loads(url.read())
-        
-        articles_object = None
+        get_articles_data = url.read()
+        get_articles_response =  json.loads(get_articles_data)
 
-        if articles_results['articles']:
-            articles_object = process_articles(articles_results['articles'])
-    return articles_object
+        articles_results = None
+
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_articles(articles_results_list)
+
+    return articles_results
 
 
 def process_sources(news_list):
@@ -67,6 +69,7 @@ def process_sources(news_list):
     '''
     news_sources = []
     for news_item in news_list:
+        id = news_item.get('id')
         name = news_item.get('name')
         description = news_item.get('description')
         category = news_item.get('category')
@@ -75,7 +78,7 @@ def process_sources(news_list):
         url = news_item.get('url')
 
         if description:
-            news_object = News(name,description,category,language,country,url)
+            news_object = News(id,name,description,category,language,country,url)
             news_sources.append(news_object)
 
     return news_sources
@@ -83,33 +86,33 @@ def process_sources(news_list):
 def process_articles(articles_list):
     '''
     '''
-    articles_object = []
-    for article_item in articles_list:
-        id = article_item.get('id')
-        author = article_item.get('author')
-        title = article_item.get('title')
-        description = article_item.get('description')
-        url = article_item.get('url')
-        image = article_item.get('urlToImage')
-        date = article_item.get('publishedAt')
+    articles_results = []
+    for article in articles_list:
+        id = article.get('id')
+        author = article.get('author')
+        title = article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        image = article.get('urlToImage')
+        
         
         if image:
-            articles_result = Articles(id,author,title,description,url,image,date)
-            articles_object.append(articles_result)
+            articles_object = Articles(id,author,title,description,url,image)
+            articles_results.append(articles_object)
     
-    return articles_object
+    return articles_results
 
-def search_news(wanted_news):
-    search_news_url = 'https://newsapi.org/v2/everything?apiKey={}&q={}'.format(api_key,wanted_news)
+# def search_news(wanted_news):
+#     search_news_url = 'https://newsapi.org/v2/everything?apiKey={}&q={}'.format(api_key,wanted_news)
 
-    with urllib.request.urlopen(search_news_url) as url:
-        search_news_data = url.read()
-        search_news_response = json.loads(search_news_data)
+#     with urllib.request.urlopen(search_news_url) as url:
+#         search_news_data = url.read()
+#         search_news_response = json.loads(search_news_data)
 
-        search_news_results = None
+#         search_news_results = None
 
-        if search_news_response['articles']:
-            search_news_list = search_news_response['articles']
-            search_news_results = process_sources(search_news_list)
+#         if search_news_response['articles']:
+#             search_news_list = search_news_response['articles']
+#             search_news_results = process_sources(search_news_list)
 
-    return search_news_results
+#     return search_news_results
