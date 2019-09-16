@@ -93,7 +93,7 @@ def process_articles(articles_list):
         title = article.get('title')
         description = article.get('description')
         url = article.get('url')
-        image = article.get('image')
+        image = article.get('urlToImage')
         
         
         if image:
